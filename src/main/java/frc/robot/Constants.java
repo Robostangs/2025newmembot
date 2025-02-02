@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -15,5 +17,22 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+  }
+  public static final String CANBUS_NAME = null;
+  public static final int PIGEON2_ID = 1;
+
+
+  // Motor ids
+  public abstract static class kDrivetrain {
+    public static final int LEFT_LEADER_ID = 2;
+    public static final int LEFT_FOLLOW_ID = 17;
+    public static final int RIGHT_LEADER_ID = 14;
+    public static final int RIGHT_FOLLOW_ID = 20;
+
+
+    public static final IdleMode kIdleMode = IdleMode.kBrake;
+
+
+    public final static double driveMulti = 0.4;
   }
 }
