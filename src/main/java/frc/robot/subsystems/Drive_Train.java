@@ -30,7 +30,7 @@ import org.opencv.dnn.Model;
 
 
 
-public class Drive_Train<object> extends SubsystemBase {
+public class Drive_Train extends SubsystemBase {
   /**
    * This function is run when the robot is first started up and should be used
    * for any
