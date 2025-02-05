@@ -54,10 +54,10 @@ public class Drive_Train<object> extends SubsystemBase {
   private final double kArmTick2Deg = 360.0 / 512 * 26 / 42 * 18 / 60 * 18 / 84;//
 
   public Drive_Train() {
-    leftmaster = new SparkMax(0, MotorType.kBrushless);
-    rightmaster = new SparkMax(1, MotorType.kBrushless);
-    leftslave = new SparkMax(2, MotorType.kBrushless);
-    rightslave = new SparkMax(3, MotorType.kBrushless);
+    leftmaster = new SparkMax(Constants.kDrivetrain.LEFT_LEADER_ID, MotorType.kBrushless);
+    rightmaster = new SparkMax(Constants.kDrivetrain.LEFT_FOLLOW_ID, MotorType.kBrushless);
+    leftslave = new SparkMax(Constants.kDrivetrain.RIGHT_LEADER_ID, MotorType.kBrushless);
+    rightslave = new SparkMax(Constants.kDrivetrain.RIGHT_FOLLOW_ID, MotorType.kBrushless);
     // leftslave.follow(leftmaster);
     SparkMaxConfig config = new SparkMaxConfig();
     config.follow(leftmaster);

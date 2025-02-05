@@ -19,10 +19,6 @@ public class Drive_Command extends Command {
 
     // Variables used to store trigger and joystic values from controller
     private DoubleSupplier leftTrigger, rightTrigger, leftJoy;
-    private double leftTriggerValue, rightTriggerValue, leftJoyValue;
-    private double overallSpeed;
-    private double leftSpeed, rightSpeed;
-    private double leftspeedvalue, rightspeedvalue;
 
 
     public Drive_Command(DoubleSupplier leftTrigger, DoubleSupplier rightTrigger, DoubleSupplier leftJoy) {
@@ -46,13 +42,14 @@ public class Drive_Command extends Command {
 
 
         // sending speed to drivetrain
-        mDrivetrain.setSpeed(leftSpeed, rightSpeed);
+        mDrivetrain.setSpeed(leftTrigger.getAsDouble(), rightTrigger.getAsDouble());
 
 
         // print Certain variables to "SmartDashborad"
-        SmartDashboard.putNumber("Overall Speed", overallSpeed);
-        SmartDashboard.putNumber("Left Speed", leftSpeed);
-        SmartDashboard.putNumber("Right Speed", rightSpeed);
+        SmartDashboard.putNumber("Left Speed", leftTrigger.getAsDouble());
+        SmartDashboard.putNumber("Right Speed", rightTrigger.getAsDouble());
+        System.out.println("Left Speed"+ leftTrigger);
+        System.out.println("Right Speed"+ rightTrigger);
     }
 
 
