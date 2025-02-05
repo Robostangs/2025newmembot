@@ -25,7 +25,7 @@ public class Drive_Command extends Command {
     private double leftspeedvalue, rightspeedvalue;
 
 
-    public Drive_Command(DoubleSupplier leftTrigger, DoubleSupplier rightTrigger, DoubleSupplier leftJoy) {
+    public Drive_Command(DoubleSupplier leftTrigger , DoubleSupplier rightTrigger, DoubleSupplier leftJoy) {
         // Auto-generated constructor stub
         this.leftTrigger = leftTrigger;
         this.rightTrigger = rightTrigger;
@@ -43,16 +43,25 @@ public class Drive_Command extends Command {
     public void execute() {
 
 
+            //converts trigger inputs into numberical values
+        leftTriggerValue = leftTrigger.getAsDouble();
+        rightTriggerValue = rightTrigger.getAsDouble();
+        leftJoyValue = leftJoy.getAsDouble();
 
+        // CALCULATE Right and Left Speed
+        overallSpeed = rightTriggerValue - leftTriggerValue;
+
+        leftSpeed = overallSpeed + leftJoyValue;
+        rightSpeed = overallSpeed - leftJoyValue;
 
         // sending speed to drivetrain
-        mDrivetrain.setSpeed(leftSpeed, rightSpeed);
+        mDrivetrain.setSpeed(leftTrigger.getAsDouble(), rightTrigger.getAsDouble());
 
 
         // print Certain variables to "SmartDashborad"
         SmartDashboard.putNumber("Overall Speed", overallSpeed);
-        SmartDashboard.putNumber("Left Speed", leftSpeed);
-        SmartDashboard.putNumber("Right Speed", rightSpeed);
+        SmartDashboard.putNumber("Left Speed", leftTrigger.getAsDouble());
+        SmartDashboard.putNumber("Right Speed", rightTrigger.getAsDouble());
     }
 
 
@@ -67,7 +76,7 @@ public class Drive_Command extends Command {
 
 
     public void end(boolean interrupted) {
-        mDrivetrain.setSpeed(0, 0);
+        mDrivetrain.setSpeed(0.7, 0.7);
     }
     //baja blast bottom drawer somewhere in the middle
 
