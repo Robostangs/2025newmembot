@@ -30,7 +30,7 @@ import org.opencv.dnn.Model;
 
 
 
-public class Drive_Train<object> extends SubsystemBase {
+public class Drive_Train extends SubsystemBase {
   /**
    * This function is run when the robot is first started up and should be used
    * for any
@@ -54,7 +54,7 @@ public class Drive_Train<object> extends SubsystemBase {
   private final double kArmTick2Deg = 360.0 / 512 * 26 / 42 * 18 / 60 * 18 / 84;//
 
   public Drive_Train() {
-    leftmaster = new SparkMax(Constants.kDrivetrain.LEFT_LEADER_ID, MotorType.kBrushless);
+    leftmaster = new SparkMax( Constants.kDrivetrain.LEFT_LEADER_ID, MotorType.kBrushless);
     rightmaster = new SparkMax(Constants.kDrivetrain.LEFT_FOLLOW_ID, MotorType.kBrushless);
     leftslave = new SparkMax(Constants.kDrivetrain.RIGHT_LEADER_ID, MotorType.kBrushless);
     rightslave = new SparkMax(Constants.kDrivetrain.RIGHT_FOLLOW_ID, MotorType.kBrushless);

@@ -22,6 +22,8 @@ public class RobotContainer {
 
   Subsystem m_drivetrain;
   // The robot's subsystems and commands are defined here...
+  
+  Subsystem Drive_Train;
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -32,7 +34,12 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    configureDefaultCommands();
+
+    Drive_Train.setDefaultCommand(
+      new Drive_Command(
+          ()-> -m_driverController.getLeftX(),
+          ()-> -m_driverController.getLeftY(), 
+          ()-> m_driverController.getRightX()));
   }
   //Tammy is not him he black as hell, slow as hell,
  
