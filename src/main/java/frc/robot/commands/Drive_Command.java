@@ -15,11 +15,19 @@ public class Drive_Command extends Command {
 
 
     private Drive_Train mDrivetrain = Drive_Train.getInstance();
+    private DoubleSupplier m_forward, m_rotation;
 
 
     // Variables used to store trigger and joystic values from controller
     private DoubleSupplier leftTrigger, rightTrigger, leftJoy;
+    private double leftTriggerValue, rightTriggerValue, leftJoyValue;
+    private double overallSpeed;
+    private double leftSpeed, rightSpeed;
+    private double leftspeedvalue, rightspeedvalue;
 
+
+
+    
 
     public Drive_Command(DoubleSupplier leftTrigger , DoubleSupplier rightTrigger, DoubleSupplier leftJoy) {
         // Auto-generated constructor stub
@@ -35,20 +43,16 @@ public class Drive_Command extends Command {
     // Called every time the scheduler runs while the command is scheduled.
 
 
+ 
     @Override
     public void execute() {
-
-
-            //converts trigger inputs into numberical values
-        leftTriggerValue = leftTrigger.getAsDouble();
-        rightTriggerValue = rightTrigger.getAsDouble();
-        leftJoyValue = leftJoy.getAsDouble();
 
         // CALCULATE Right and Left Speed
         overallSpeed = rightTriggerValue - leftTriggerValue;
 
         leftSpeed = overallSpeed + leftJoyValue;
         rightSpeed = overallSpeed - leftJoyValue;
+
 
         // sending speed to drivetrain
         mDrivetrain.setSpeed(leftTrigger.getAsDouble(), rightTrigger.getAsDouble());
@@ -74,7 +78,7 @@ public class Drive_Command extends Command {
     public void end(boolean interrupted) {
         mDrivetrain.setSpeed(0.7, 0.7);
     }
-    //baja blast bottom drawer somewhere in the middle
+
 
 
     // Returns true when the command should end.

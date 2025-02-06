@@ -17,13 +17,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 
 public class RobotContainer {
-  public static final CommandXboxController xDrive = new CommandXboxController(0);
-  private final Drive_Train drivetrain = Drive_Train.getInstance();
-
-  Subsystem m_drivetrain;
   // The robot's subsystems and commands are defined here...
   
-  Subsystem Drive_Train;
+  Drive_Train mDrive_Train = Drive_Train.getInstance();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -32,42 +28,34 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+
     // Configure the trigger bindings
     configureBindings();
 
-    Drive_Train.setDefaultCommand(
+    mDrive_Train.setDefaultCommand(
       new Drive_Command(
-          ()-> -m_driverController.getLeftX(),
-          ()-> -m_driverController.getLeftY(), 
-          ()-> m_driverController.getRightX()));
+          ()-> -m_driverController.getLeftY(),
+          ()-> -m_driverController.getRightY(), 
+          ()-> m_driverController.getLeftX()));
   }
   //Tammy is not him he black as hell, slow as hell,
+
  
-
-  
   private void configureBindings() {
-    drivetrain.setDefaultCommand(
-      new Drive_Command(
-          ()-> -m_driverController.getLeftX(),
-          ()-> -m_driverController.getLeftY(),
-          ()-> m_driverController.getRightX()));
-        
-
-    
+    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));
 
-    
+    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
+    // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
- 
-  private void configureDefaultCommands() {
-  
 
-     
-      // m_driverController.rightTrigger().whileTrue(new ShootCommand(m_shooter, () -> m_driverController.getRightTriggerAxis()));
-  }
-
+  /**
+   * Use this to pass the autonomous command to the main {@link Robot} class.
+   *
+   * @return the command to run in autonomous
+   */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     return Autos.exampleAuto(m_exampleSubsystem);

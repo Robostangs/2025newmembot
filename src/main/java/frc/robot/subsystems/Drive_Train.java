@@ -42,6 +42,9 @@ public class Drive_Train extends SubsystemBase {
   SparkMax rightmaster;
   SparkMax leftslave;
   SparkMax rightslave;
+  double rs;
+  double ls;
+
 
   // SparkMax leftMotor;
   // SparkMax rightMotor;
@@ -59,17 +62,21 @@ public class Drive_Train extends SubsystemBase {
     leftslave = new SparkMax(Constants.kDrivetrain.RIGHT_LEADER_ID, MotorType.kBrushless);
     rightslave = new SparkMax(Constants.kDrivetrain.RIGHT_FOLLOW_ID, MotorType.kBrushless);
     // leftslave.follow(leftmaster);
-    SparkMaxConfig config = new SparkMaxConfig();
-    config.follow(leftmaster);
-    leftslave.configure(config,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
-    config.follow(rightmaster);
-    rightslave.configure(config,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
+    // SparkMaxConfig config = new SparkMaxConfig();
+    // config.follow(leftmaster);
+    // leftslave.remove
+    // config.follow(rightmaster);
+    // rightslave.configure(config,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
+
     
 
   }
 
   @Override
   public void periodic() {
+    rightmaster.getEncoder().getVelocity();
+    SmartDashboard.putNumber("right speed", rs);
+    SmartDashboard.putNumber("left speed", ls);
 
   }
 
@@ -97,7 +104,19 @@ public class Drive_Train extends SubsystemBase {
 
   public void setSpeed(double leftSpeed, double rightSpeed) {
     // set the speed of the left and right motors
+    rs = rightSpeed;
+    ls = leftSpeed;
+
+
+
     leftmaster.set(leftSpeed * kDrivetrain.driveMulti);
     rightmaster.set(rightSpeed * kDrivetrain.driveMulti);
+    rightslave.set(rightSpeed*kDrivetrain.driveMulti);
+    leftslave.set(leftSpeed*kDrivetrain.driveMulti);
+  }
+
+  public void arcadeDrive(double asDouble, double asDouble2) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'arcadeDrive'");
   }
 }

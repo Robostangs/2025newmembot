@@ -24,8 +24,8 @@ public final class Constants {
 
   // Motor ids
   public abstract static class kDrivetrain {
-    public static final int LEFT_LEADER_ID = 13;
-    public static final int LEFT_FOLLOW_ID = 14;
+    public static final int LEFT_LEADER_ID = 14;
+    public static final int LEFT_FOLLOW_ID = 13;
     public static final int RIGHT_LEADER_ID = 23;
     public static final int RIGHT_FOLLOW_ID = 24;
 
