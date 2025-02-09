@@ -6,14 +6,19 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive_Command;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Spit;
 import frc.robot.subsystems.Drive_Train;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+
+//ADD TWO CONTROLLER STUFF
 
 
 public class RobotContainer {
@@ -34,11 +39,13 @@ public class RobotContainer {
 
     mDrive_Train.setDefaultCommand(
       new Drive_Command(
-          ()-> -m_driverController.getLeftY(),
-          ()-> -m_driverController.getRightY(), 
-          ()-> m_driverController.getLeftX()));
+        ()-> -m_driverController.getLeftY(),
+        ()-> m_driverController.getRightY(), 
+        ()-> m_driverController.getLeftX()));
   }
+    
   //Tammy is not him he black as hell, slow as hell,
+  
 
  
   private void configureBindings() {
@@ -48,7 +55,9 @@ public class RobotContainer {
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    
+    m_driverController.x().whileTrue(new Deploy());
+    m_driverController.b().whileTrue(new Spit());
   }
 
   /**

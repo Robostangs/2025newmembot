@@ -34,7 +34,7 @@ public class Drive_Train extends SubsystemBase {
   /**
    * This function is run when the robot is first started up and should be used
    * for any
-   * initialization code.
+   * initialization code. 
    */
   double kResetSafeParameters;
   static Drive_Train mDrivetrain;
@@ -58,15 +58,14 @@ public class Drive_Train extends SubsystemBase {
 
   public Drive_Train() {
     leftmaster = new SparkMax( Constants.kDrivetrain.LEFT_LEADER_ID, MotorType.kBrushless);
-    rightmaster = new SparkMax(Constants.kDrivetrain.LEFT_FOLLOW_ID, MotorType.kBrushless);
-    leftslave = new SparkMax(Constants.kDrivetrain.RIGHT_LEADER_ID, MotorType.kBrushless);
+    rightmaster = new SparkMax(Constants.kDrivetrain.RIGHT_LEADER_ID, MotorType.kBrushless);
+    leftslave = new SparkMax(Constants.kDrivetrain.LEFT_FOLLOW_ID, MotorType.kBrushless);
     rightslave = new SparkMax(Constants.kDrivetrain.RIGHT_FOLLOW_ID, MotorType.kBrushless);
-    // leftslave.follow(leftmaster);
-    // SparkMaxConfig config = new SparkMaxConfig();
-    // config.follow(leftmaster);
-    // leftslave.remove
-    // config.follow(rightmaster);
-    // rightslave.configure(config,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
+    DifferentialDrive drive = new DifferentialDrive(leftmaster, rightmaster);
+        // SparkMaxConfig config = new SparkMaxConfig();
+        // config.follow(leftmaster);
+        // config.follow(rightmaster);
+        // rightslave.configure(config,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
 
     
 
@@ -115,8 +114,10 @@ public class Drive_Train extends SubsystemBase {
     leftslave.set(leftSpeed*kDrivetrain.driveMulti);
   }
 
-  public void arcadeDrive(double asDouble, double asDouble2) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'arcadeDrive'");
-  }
+public DifferentialDrive setMotorsPower(double Rightfrontpower, double Rightbackpower) {
+  leftmaster.set(Rightfrontpower);
+  rightmaster.set(Rightbackpower);
+  drive.arcadeDrive(Rightfrontpower, Rightbackpower);
+  return drive;
+}
 }

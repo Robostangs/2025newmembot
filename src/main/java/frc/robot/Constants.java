@@ -22,10 +22,14 @@ public final class Constants {
   public static final int PIGEON2_ID = 1;
 
 
+  public static class Intake_Constants{
+    public static final double kIntakedutycycle = 0.3;
+    public static final double kSpitdutycycle = -0.3; 
+  }
   // Motor ids
   public abstract static class kDrivetrain {
-    public static final int LEFT_LEADER_ID = 14;
-    public static final int LEFT_FOLLOW_ID = 13;
+    public static final int LEFT_LEADER_ID = 13;
+    public static final int LEFT_FOLLOW_ID = 14;
     public static final int RIGHT_LEADER_ID = 23;
     public static final int RIGHT_FOLLOW_ID = 24;
 
