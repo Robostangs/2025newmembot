@@ -9,7 +9,7 @@ public class Intake extends SubsystemBase {
     static Intake mIntake;
     
         public Intake(){
-            Intakemotor = new TalonSRX(15);//change id based on the rev cliet motor id or check constants after
+            Intakemotor = new TalonSRX(15);
         }
 
         public static Intake getInstance() {

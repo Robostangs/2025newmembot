@@ -17,6 +17,8 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    public static final int kManinpControllerPort = 2;
+    
   }
   public static final String CANBUS_NAME = null;
   public static final int PIGEON2_ID = 1;
@@ -25,6 +27,9 @@ public final class Constants {
   public static class Intake_Constants{
     public static final double kIntakedutycycle = 0.3;
     public static final double kSpitdutycycle = -0.3; 
+  }
+  public static class telescope_Constants{
+    public static final double speedtelescope = 0.45;
   }
   // Motor ids
   public abstract static class kDrivetrain {
