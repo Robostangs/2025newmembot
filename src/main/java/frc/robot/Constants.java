@@ -25,8 +25,8 @@ public final class Constants {
 
 
   public static class Intake_Constants{
-    public static final double kIntakedutycycle = 0.3;
-    public static final double kSpitdutycycle = -0.3; 
+    public static final double kIntakedutycycle = 0.4;
+    public static final double kSpitdutycycle = -0.4; 
   }
   public static class telescope_Constants{
     public static final double speedtelescope = 0.45;
