@@ -10,12 +10,17 @@ import frc.robot.commands.Deploy;
 import frc.robot.commands.Drive_Command;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Spit;
+import frc.robot.commands.Telescope_Command_Down;
+import frc.robot.commands.telescope;
 import frc.robot.subsystems.Drive_Train;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Telescope;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 
 
 //ADD TWO CONTROLLER STUFF
@@ -26,6 +31,7 @@ public class RobotContainer {
   
   Drive_Train mDrive_Train = Drive_Train.getInstance();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  Telescope mTelescope = Telescope.getInstance();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -59,12 +65,14 @@ public class RobotContainer {
     // cancelling on release.
 
     //telescope buttons 
-    m_maninpController.getLeftY();
-    m_maninpController.getRightY();
+    m_driverController.y().whileTrue(new telescope());
+    m_driverController.a().whileTrue(new Telescope_Command_Down());
+    m_maninpController.povDown().toggleOnTrue(new PrintCommand("Zeroing").finallyDo(Telescope.zerotelescope));
    
     //Intake buttons
     m_driverController.x().whileTrue(new Deploy());
     m_driverController.b().whileTrue(new Spit());
+  
   }
 
   /**

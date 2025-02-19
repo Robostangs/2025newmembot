@@ -30,6 +30,7 @@ public final class Constants {
   }
   public static class telescope_Constants{
     public static final double speedtelescope = 0.45;
+    public static final double speedtelescopedown = -0.45;
   }
   // Motor ids
   public abstract static class kDrivetrain {
