@@ -17,7 +17,7 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
-    public static final int kManinpControllerPort = 2;
+    public static final int kManinpControllerPort = 1 ;
     
   }
   public static final String CANBUS_NAME = null;
@@ -43,7 +43,7 @@ public final class Constants {
     public static final IdleMode kIdleMode = IdleMode.kBrake;
 
 
-    public final static double driveMulti = 0.4;
+    public final static double driveMulti = 0.2;
 
   }
 }

@@ -76,7 +76,7 @@ public class Drive_Command extends Command {
 
 
     public void end(boolean interrupted) {
-        mDrivetrain.setSpeed(0.7, 0.7);
+        mDrivetrain.setSpeed(0.3, 0.3);
         
     }
 

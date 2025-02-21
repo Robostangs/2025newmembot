@@ -50,6 +50,19 @@ public class RobotContainer {
         ()-> -m_driverController.getLeftY(),
         ()-> m_driverController.getRightY(), 
         ()-> m_driverController.getLeftX()));
+    
+
+    mTelescope.setDefaultCommand(
+      new Telescope_Command_Down(
+        ()-> m_maninpController.getLeftY()
+      )
+    );
+
+    mTelescope.setDefaultCommand(
+      new telescope(
+        () -> m_maninpController.getRightY()
+      )
+    );
   }
     
 
@@ -65,13 +78,13 @@ public class RobotContainer {
     // cancelling on release.
 
     //telescope buttons 
-    m_driverController.y().whileTrue(new telescope());
-    m_driverController.a().whileTrue(new Telescope_Command_Down());
-    m_maninpController.povDown().toggleOnTrue(new PrintCommand("Zeroing").finallyDo(Telescope.zerotelescope));
+    m_maninpController.getLeftY();
+    m_maninpController.getRightY();
+   
    
     //Intake buttons
-    m_driverController.x().whileTrue(new Deploy());
-    m_driverController.b().whileTrue(new Spit());
+    m_maninpController.x().whileTrue(new Deploy());
+    m_maninpController.b().whileTrue(new Spit());
   
   }
 

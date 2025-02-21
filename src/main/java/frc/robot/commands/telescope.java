@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
 import frc.robot.subsystems.Telescope;
 
+import java.util.function.DoubleSupplier;
+
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 
@@ -12,13 +14,15 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class telescope extends Command {
     
     private Telescope mTelescope = Telescope.getInstance();
-
-public telescope(){
+    DoubleSupplier rightTrigger;
+public telescope(DoubleSupplier rightTrigger){
+    this.rightTrigger = rightTrigger;
     addRequirements(mTelescope);
 }
 @Override
 public void execute() {
-    mTelescope.setSpeed(Constants.telescope_Constants.speedtelescope);
+    mTelescope.setSpeed(rightTrigger.getAsDouble());
+
 }
 public void end (boolean interrupted) {
     mTelescope.setSpeed(0);
