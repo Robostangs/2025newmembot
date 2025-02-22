@@ -10,6 +10,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 
@@ -40,9 +41,14 @@ public final class Autos extends Command{
 
     addRequirements(mDrivetrain);
   }
+  @Override
+  public void initialize() {
+    startime = Timer.getFPGATimestamp();
+  }
 
   @Override
   public void execute() {
+    current = Timer.getFPGATimestamp();
     //formula: Difference = current - starttime}
     difference = current - startime;
     if (difference < drivetime){

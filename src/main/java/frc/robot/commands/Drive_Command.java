@@ -24,6 +24,7 @@ public class Drive_Command extends Command {
     private double overallSpeed;
     private double leftSpeed, rightSpeed;
     private double leftspeedvalue, rightspeedvalue;
+    private double multi;
 
 
 
@@ -34,9 +35,14 @@ public class Drive_Command extends Command {
         this.leftTrigger = leftTrigger;
         this.rightTrigger = rightTrigger;
         this.leftJoy = leftJoy;
+        this.multi = 1;
 
 
         addRequirements(mDrivetrain);
+    }
+    public void setMulti(double newvalue) {
+        multi = newvalue;
+
     }
 
 
@@ -55,7 +61,7 @@ public class Drive_Command extends Command {
 
 
         // sending speed to drivetrain
-        mDrivetrain.setSpeed(leftTrigger.getAsDouble(), rightTrigger.getAsDouble());
+        mDrivetrain.setSpeed(leftTrigger.getAsDouble()*multi, rightTrigger.getAsDouble()*multi);
 
 
         // print Certain variables to "SmartDashborad"

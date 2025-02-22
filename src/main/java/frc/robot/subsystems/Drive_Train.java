@@ -48,7 +48,7 @@ public class Drive_Train extends SubsystemBase {
   SparkMax rightslave;
   double rs;
   double ls;
-
+  double multi;
 
   // SparkMax leftMotor;
   // SparkMax rightMotor;
@@ -70,6 +70,7 @@ public class Drive_Train extends SubsystemBase {
         // config.follow(leftmaster);
         // config.follow(rightmaster);
         // rightslave.configure(config,com.revrobotics.spark.SparkBase.ResetMode.kResetSafeParameters,PersistMode.kPersistParameters);
+        multi = 1;
 
     
 
@@ -82,7 +83,11 @@ public class Drive_Train extends SubsystemBase {
     SmartDashboard.putNumber("left speed", ls);
 
   }
-  
+  public void setMulti(double newvalue) {
+    multi = newvalue;
+
+}
+
 
 
 
@@ -116,10 +121,10 @@ public class Drive_Train extends SubsystemBase {
 
 
 
-    leftmaster.set(leftSpeed * kDrivetrain.driveMulti);
-    rightmaster.set(rightSpeed * kDrivetrain.driveMulti);
-    rightslave.set(rightSpeed*kDrivetrain.driveMulti);
-    leftslave.set(leftSpeed*kDrivetrain.driveMulti);
+    leftmaster.set(leftSpeed * multi);
+    rightmaster.set(rightSpeed * multi);
+    rightslave.set(rightSpeed* multi);
+    leftslave.set(leftSpeed*multi);
   }
 
 public DifferentialDrive setMotorsPower(double Rightfrontpower, double Rightbackpower) {

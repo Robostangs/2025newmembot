@@ -49,7 +49,7 @@ public final class Constants {
     public static final IdleMode kIdleMode = IdleMode.kBrake;
 
 
-    public final static double driveMulti = 0.2;
+    public final static double driveMulti = 0.4;
 
   }
 }
