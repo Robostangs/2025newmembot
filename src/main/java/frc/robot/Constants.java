@@ -33,6 +33,12 @@ public final class Constants {
     public static final double speedtelescopedown = -0.45;
   }
   // Motor ids
+
+  public abstract static class kAutoDrive {
+    public static final double kAutoDriveSpeed = 0.2;
+    public static final double kAutoTurnSpeed = 0.2;
+    public static final double kAutoDriveTime = 2.0;
+  }
   public abstract static class kDrivetrain {
     public static final int LEFT_LEADER_ID = 13;
     public static final int LEFT_FOLLOW_ID = 14;

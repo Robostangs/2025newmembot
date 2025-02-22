@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.Autos;
+
 
 
 
@@ -88,8 +90,7 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+  public Command getAutonomuCommand(){
+    return new Autos(Constants.kAutoDrive.kAutoDriveTime, Constants.kAutoDrive.kAutoDriveSpeed, Constants.kAutoDrive.kAutoTurnSpeed);
   }
 }
