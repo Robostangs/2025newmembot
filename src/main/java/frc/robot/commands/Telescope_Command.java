@@ -7,15 +7,12 @@ import frc.robot.subsystems.Telescope;
 
 import java.util.function.DoubleSupplier;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-
-
-public class telescope extends Command {
+public class Telescope_Command extends Command {
     
     private Telescope mTelescope = Telescope.getInstance();
     DoubleSupplier rightTrigger;
-public telescope(DoubleSupplier rightTrigger){
+public Telescope_Command(DoubleSupplier rightTrigger){
     this.rightTrigger = rightTrigger;
     addRequirements(mTelescope);
 }

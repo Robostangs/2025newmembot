@@ -11,7 +11,7 @@ import frc.robot.commands.Drive_Command;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Spit;
 import frc.robot.commands.Telescope_Command_Down;
-import frc.robot.commands.telescope;
+import frc.robot.commands.Telescope_Command;
 import frc.robot.subsystems.Drive_Train;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Telescope;
@@ -52,15 +52,10 @@ public class RobotContainer {
         ()-> m_driverController.getLeftX()));
     
 
-    mTelescope.setDefaultCommand(
-      new Telescope_Command_Down(
-        ()-> m_maninpController.getLeftY()
-      )
-    );
-
-    mTelescope.setDefaultCommand(
-      new telescope(
-        () -> m_maninpController.getRightY()
+    new Trigger(() -> Math.abs(m_maninpController.getLeftY())>0.05).whileTrue(
+      new Telescope_Command(
+        
+        () -> m_maninpController.getLeftY()
       )
     );
   }

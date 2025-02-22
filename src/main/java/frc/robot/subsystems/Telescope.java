@@ -2,20 +2,19 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.telescope;
+import frc.robot.commands.Telescope_Command;
 
-import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 
 public class Telescope extends SubsystemBase {
-    static TalonSRX telescopemotor;
+    static TalonFX telescopemotor;
     static Telescope mTelescope;
     public Telescope() {
-        telescopemotor = new TalonSRX(12);//changge based on phoneix tunerx
+        telescopemotor = new TalonFX(12);//changge based on phoneix tunerx
     }
     public static Runnable zerotelescope = () -> {
-        telescopemotor.setSelectedSensorPosition(0);
+        telescopemotor.setPosition(0);
     };
    
 
@@ -26,13 +25,13 @@ public class Telescope extends SubsystemBase {
         return mTelescope;
     }
     public void setSpeed(double speed) {
-        telescopemotor.set(TalonSRXControlMode.PercentOutput,speed);
+        telescopemotor.set(speed);
     }
 
     public double getPosition() {
-        return telescopemotor.getSelectedSensorPosition();
+        return telescopemotor.getPosition().getValueAsDouble();
     }public void setPosition(double postion) {
-        telescopemotor.setSelectedSensorPosition(postion);
+        telescopemotor.setPosition(postion);
     }
     @Override
   public void periodic() {
