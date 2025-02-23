@@ -52,13 +52,8 @@ public final class Autos extends Command{
     current = Timer.getFPGATimestamp();
     //formula: Difference = current - starttime}
     difference = current - startime;
-    if (difference < drivetime){
       mDrivetrain.setSpeed(Constants.kAutoDrive.kAutoDriveSpeed, Constants.kAutoDrive.kAutoDriveSpeed);
-    } else {
-      mDrivetrain.setSpeed(0, 0);
-      finished = true;
     }
-}
 
   @Override
   public boolean isFinished() {

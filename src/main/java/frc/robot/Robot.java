@@ -60,8 +60,8 @@ public class Robot extends TimedRobot {
     // schedule the autonomous command (example)
     // if (m_autonomousCommand != null) {
     //   m_autonomousCommand.schedule();
-    Autos m_autonomousCommand = new Autos(5.0, 0.5, 0.5, 0.5, 0.5);
-    m_autonomousCommand.withTimeout(5.0);
+     m_autonomousCommand = new Autos(5.0, 0.5, 0.5, 0.5, 0.5).withTimeout(5);
+   
 
     
   }
