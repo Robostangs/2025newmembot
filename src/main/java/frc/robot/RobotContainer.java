@@ -54,6 +54,8 @@ public class RobotContainer {
         ()-> m_driverController.getLeftX()
         ));
         m_driverController.leftBumper().onTrue(Drive_Train.getInstance().runOnce(() -> Drive_Train.getInstance().setMulti(0.2)));
+        m_driverController.rightBumper().onTrue(Drive_Train.getInstance().runOnce(() -> Drive_Train.getInstance().setMulti(0.4)));
+
 
     new Trigger(() -> Math.abs(m_maninpController.getLeftY())>0.05).whileTrue(
       new Telescope_Command(

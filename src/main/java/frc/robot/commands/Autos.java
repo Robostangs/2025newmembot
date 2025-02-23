@@ -39,6 +39,7 @@ public final class Autos extends Command{
     this.rightspeed = rightspeed;
     this.leftspeed = leftspeed;
 
+    mDrivetrain =  Drive_Train.getInstance();
     addRequirements(mDrivetrain);
   }
   @Override
