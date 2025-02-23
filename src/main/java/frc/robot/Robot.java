@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Autos;
+import frc.robot.commands.Spit;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -60,8 +61,8 @@ public class Robot extends TimedRobot {
     // schedule the autonomous command (example)
     // if (m_autonomousCommand != null) {
     //   m_autonomousCommand.schedule();
-     m_autonomousCommand = new Autos(5.0, 0.5, 0.5, 0.5, 0.5).withTimeout(5);
-   
+     m_autonomousCommand = new Autos(5.0, 0.6, 0.6,  0.5).withTimeout(7).andThen(new Spit());
+     m_autonomousCommand.schedule();
 
     
   }

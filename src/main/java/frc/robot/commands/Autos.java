@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 
 public final class Autos extends Command{
-  
   public Autos(double kautodrivetime, double kautodrivespeed, double kautoturnspeed) {
     // Constructor
   }
@@ -28,12 +27,14 @@ public final class Autos extends Command{
   private Double startime;
   private Double mDrive_Train;
   private Double difference;
+
+
   //true false variable
   private boolean finished;
 
   static Drive_Train mDrivetrain;
-  public Autos(Double drivetime, Double rightspeed, double leftspeed, double kautoturnspeed, double mDrive_Train){
-    
+  public Autos(Double drivetime, Double rightspeed, double leftspeed, double mDrive_Train){
+
     this.mDrive_Train = mDrive_Train;
     this.drivetime = drivetime;
     this.rightspeed = rightspeed;
@@ -50,9 +51,9 @@ public final class Autos extends Command{
   @Override
   public void execute() {
     current = Timer.getFPGATimestamp();
-    //formula: Difference = current - starttime}
+        //formula: Difference = current - starttime}
     difference = current - startime;
-      mDrivetrain.setSpeed(Constants.kAutoDrive.kAutoDriveSpeed, Constants.kAutoDrive.kAutoDriveSpeed);
+      mDrivetrain.setSpeed(Constants.kAutoDrive.kAutoDriveSpeed, -Constants.kAutoDrive.kAutoDriveSpeed);
     }
 
   @Override
