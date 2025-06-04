@@ -7,13 +7,15 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ExampleSubsystem extends SubsystemBase {
+public class DrivetrainSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   public SparkMax RightMaster;
   public SparkMax LeftMaster;
-  public SparkMax RightSlave
+  public SparkMax RightSlave;
   public SparkMax LeftSlave;
-  public ExampleSubsystem() {}
+  public DrivetrainSubsystem() {
+  
+  }
 
   /**
    * Example command factory method.
@@ -21,7 +23,8 @@ public class ExampleSubsystem extends SubsystemBase {
    * @return a command
    */
   public void SetSpeed(int leftSpeed, int rightSpeed){
-
+    LeftMaster.set(leftSpeed);
+    RightMaster.set(rightSpeed);
   }
 
   /**
